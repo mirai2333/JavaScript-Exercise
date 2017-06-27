@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>函数接收参数并弹出</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{text-align: center;}
+        input{margin-bottom: 10px;}
+        .div1{
+            width: 200px;
+            margin: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var text = document.getElementsByTagName('input');
+            var button1 = document.getElementById('button1')
+            button1.onclick = function () {
+                alert(text[0].value);
+                alert(text[1].value);
+            }
+    }
+    </script>
+</head>
+<body>
+    <div class="div1">
+        <input type="text" value="北京市">
+        <input type="text" value="上海市">
+        <input id="button1" type="button" value="传参">
+    </div>
+</body>
+</html>
