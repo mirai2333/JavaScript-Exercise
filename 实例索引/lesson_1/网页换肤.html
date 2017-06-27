@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>网页换肤</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{
+            text-align: center;
+            background-color: pink;
+        }
+        ul{
+            width: auto;
+        }
+
+        a{
+            color: #ffffff;
+            font-size: 13px;
+        }
+        a:link,a:visited{text-decoration:none;}
+        a:hover{text-decoration:underline;}
+        .red{border: 3px solid red;background-color: #ffffff}
+        .green{border: 3px solid green;background-color: green}
+        .black{border: 3px solid black;background-color: black}
+        #nav li{
+        float: left;
+        width: 81px;
+        line-height: 25px;
+        display: inline-block;
+        text-align: center;
+        border-left: 1px solid #ffffff;
+        }
+        #outer{
+            width: 500px;
+            margin: auto;
+            border: none;
+        }
+        #nav,#choice{
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
+        #nav{height: 25.6px;border: 1px solid #ffffff;background-color: red;}
+        #choice{text-align: left;}
+        #choice li{
+            margin-right: 5px;
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var body = document.getElementById('color');
+            var nav = document.getElementById('nav');
+            var cho1 = document.getElementById('choice');
+            var cho = cho1.getElementsByTagName('li');
+            var bcgcolor = ["background-color:#fdd","background-color:#a3c5a8","background-color:#ccc"];
+            var bcgcolor1 = ["background-color:red","background-color:green","background-color:black"];
+            for (var i = 0; i < cho.length; i++) {
+                cho[i].index = i;
+                cho[i].onclick = function (){
+                    body.setAttribute("style",bcgcolor[this.index]);
+                    nav.setAttribute("style",bcgcolor1[this.index]);
+                    for (var i = 0; i < cho.length; i++) {
+                        cho[i].setAttribute("style",bcgcolor1[i]);
+                    }
+                    cho[this.index].setAttribute("style","background-color:#ffffff");
+                    }
+                }
+            }
+    </script>
+</head>
+<body id="color">
+    <div id="outer">
+        <ul id="choice">
+            <li class="red"></li>
+            <li class="green"></li>
+            <li class="black"></li>
+        </ul>
+        <ul id="nav">
+            <li><a href="javascript:;">新闻</a></li>
+            <li><a href="javascript:;">娱乐</a></li>
+            <li><a href="javascript:;">体育</a></li>
+            <li><a href="javascript:;">电影</a></li>
+            <li><a href="javascript:;">音乐</a></li>
+            <li><a href="javascript:;">旅游</a></li>
+        </ul>
+    </div>
+</body>
+</html>

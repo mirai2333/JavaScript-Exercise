@@ -15,6 +15,7 @@
             width: 100px;
             height: 100px;
             background-color: black;
+            color:#FFFFFF;
         }
     </style>
     <script type="text/javascript">
@@ -27,13 +28,16 @@
         var attr = ["width","height","background-color","display","display"];
         var attrValues =
                 ["200px","200px","red","none","block"];
-        for (var i = buttons.length - 1; i >= 0; i--) {
+        buttons[buttons.length-1].onclick = function () {
+            box.innerHTML="mirai2333";
+        }
+        for (var i = buttons.length - 2; i >= 0; i--) {
             buttons[i].index=i;
             buttons[i].onclick = function (){
                 //下面这句很巧，利用逻辑与的执行规则：若表达式1为真再执行表达式2.达到条件判断的目的！！
                 //element.style.cssText这句只撤销了 elem.style添加的样式，而没有撤销#div1添加的样式
-                this.index == buttons.length - 1 && (box.style.cssText = "");
-
+                this.index == buttons.length - 2 && (box.style.cssText = "");
+                if(this.index==4)box.innerHTML="";
                 change(box,attr[this.index],attrValues[this.index]);
             }
         }
@@ -47,6 +51,7 @@
         <input type="button" value="变色">
         <input type="button" value="隐藏">
         <input type="button" value="重置">
+        <input type="button" value="加名字">
     </div>
     <div  id="div1"></div>
 </body>
