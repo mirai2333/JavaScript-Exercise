@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用循环将3个div变成红色</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{text-align: center;}
+        input{margin-bottom: 20px;margin-top: 20px;}
+        .div1{}
+        .div1 div{
+            display: inline-flex;
+            background-color: black;
+            width: 100px;
+            height: 100px;
+        }
+        .div2{margin: auto 10px auto 10px;}
+    </style>
+    <script type="text/javascript">
+            window.onload = function(){
+            var div = document.getElementsByClassName('div1')[0].getElementsByTagName('div');
+            var button = document.getElementById('button');
+            var button1 = document.getElementById('button1');
+            button.onclick = function(){
+                for (var i = 0; i < div.length; i++) {
+                    div[i].setAttribute("style","background-color:red");
+                }
+            }
+            button1.onclick = function(){
+                for (var i = 0; i < div.length; i++) {
+                    div[i].setAttribute("style","background-color:black");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" value="用循环将div变成红色" id="button">
+        <div class="div1">
+            <div></div>
+            <div class="div2"></div>
+            <div></div>
+        </div>
+        <input type="button" value="变回去" id="button1">
+    </div>
+</body>
+</html>
