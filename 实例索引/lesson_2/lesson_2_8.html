@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>简易JS年历</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{text-align: center;}
+        ul{padding-left: 7px;margin-bottom: 5px;}
+
+        li{width: 59px;height: 49px;
+            display: inline-block;
+            margin: 10px 3px;
+
+            background-color: #424242;
+            padding-top:10px;
+            border: 1px solid #424242;
+            color: white;
+            font-size: 15px;}
+
+        #div0{width: 305px; margin: auto; background-color: #eaeaea;overflow:hidden;}
+
+        #div1{width: 270px;
+            text-align: left;
+            margin-left: 18px;
+            margin-bottom: 10px;
+            color:#666;background-color:#f1f1f1;border:1px solid #fff;}
+
+        #div1 h5{margin: 3px auto 5px 10px;}
+
+        #div1 p{font-size: 10px;margin:7px auto 8px 10px;}
+        .current{background-color: white;color: pink;cursor: pointer;}
+    </style>
+    <script type="text/javascript">
+        var date = new Date();
+        var month = date.getMonth();
+        descriptions = [
+        "元旦：1月1日至3日，放假三天。",
+        "春节：2月2日至8日，放假7天。",
+        "妇女节：3月8日妇女节，与我无关。",
+        "清明节：4月3日至5日，放假3天",
+        "劳动节：4月30日至5月2日，放假3天。",
+        "端午节：6月4日至6日，放假3天。",
+        "小暑：7月7日，不放假。",
+        "七夕节：8月6日，与我无关",
+        "中秋节：9月10日至12日，放假3天。",
+        "国庆节：10月1日至7日，放假7天。",
+        "立冬：11月8日，不放假。",
+        "艾滋病日：12月1日<br />废除奴隶制国际日：12月2日。"
+        ];
+        window.onload = function(){
+            var lis = document.getElementsByTagName('li');
+            var months = document.getElementById('month');
+            var description = document.getElementById('description');
+            lis[month].setAttribute("class","current");
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].index = i;
+                lis[i].onmouseover = function(){
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].removeAttribute("class");
+                    }
+                    this.setAttribute("class","current");
+                    months.innerHTML = this.index+1;
+                    description.innerHTML = descriptions[this.index];
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div0">
+        <ul>
+            <li>1<br/>JAN</li>
+            <li>2<br/>FAB</li>
+            <li>3<br/>MAR</li>
+            <li>4<br/>APR</li>
+            <br/>
+            <li>5<br/>MAY</li>
+            <li>6<br/>JUN</li>
+            <li>7<br/>JUL</li>
+            <li>8<br/>AUG</li>
+            <br/>
+            <li>9<br/>SEP</li>
+            <li>10<br/>OCT</li>
+            <li>11<br/>NOV</li>
+            <li>12<br/>DEC</li>
+            <br/>
+        </ul>
+        <div id="div1">
+            <h5><strong id="month">7</strong>月节日</h5>
+            <p id="description">小暑：7月7日，不放假。</p>
+        </div>
+    </div>
+</body>
+</html>
