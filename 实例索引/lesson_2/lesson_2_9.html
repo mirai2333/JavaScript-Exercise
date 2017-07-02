@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>单一按钮显示/隐藏</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{text-align: center;font-size: 13px;}
+        div{margin: auto;width: 230px;border: 1px solid #aaa}
+        h2{background:#ced3d7;text-align: left;margin: 0px;line-height: 40px;border: 1px solid #ffffff;color: #57646e}
+        ul{padding-left: 0px;margin:0px;display: none;}
+        h2,li{padding-left: 10px;cursor: pointer;}
+        li{list-style-type: none;text-align: left;background-color: #e9edf2;line-height: 30px;}
+        a{color: #6b7980;text-decoration: none;}
+        a:hover{text-decoration: underline;}
+        .active{background-color: #ffffff}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var titlebox = document.getElementsByTagName('h2')[0];
+            var lists = document.getElementsByTagName('ul')[0];
+            titlebox.onclick = function(){
+                lists.style.display = lists.style.display == "none"?"block":"none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div0">
+        <h2>播放列表</h2>
+        <ul>
+            <li><a href="#">玩家之徒 - 蔡依林</a></li>
+            <li><a href="#">原谅我就是这样的女生 - 戴佩妮</a></li>
+            <li><a href="#">猜不透 - 叮当</a></li>
+            <li><a href="#">自导自演 - 周杰伦</a></li>
+            <li><a href="#">浪漫窝 - 璇子</a></li>
+            <li><a href="#">流年 - 王菲</a></li>
+        </ul>
+    </div>
+</body>
+</html>
