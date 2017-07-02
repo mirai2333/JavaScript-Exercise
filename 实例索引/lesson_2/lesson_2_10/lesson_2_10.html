@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>提示框效果</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{text-align: center;}
+        h4{margin-bottom: 5px;}
+        h2{text-align: center;margin-bottom: 0px;}
+        ul{list-style-type: none;overflow: hidden;margin: 0px;position: relative;bottom: 0px;left: -10px; height: 230px;width: 580px;padding: 12px 0px 3px 20px;}
+        li{position: relative;width: 100px;height: 100px;float: left;margin: 5px;}
+        ul li div{
+            text-align: left;
+            float: left;
+            color: #666;
+            border: 1px solid #333;
+            background: #f0f0f0;
+            width: 80px;
+            height: 80px;
+            padding:10px;
+        }
+        img{
+            display: none;
+            float: left;
+            position: relative;
+            border: 2px solid gray;
+            top: -118px;
+            left: -15px;
+            cursor: crosshair;
+        }
+        #div0{
+            position: relative;
+            width: 570px;height: 280px;
+            border: 1px solid red;
+            font-size: 13px;
+            margin: auto;
+        }
+        .show{display: block;}
+        .unshow{display: none;}
+        .zindex{z-index:2;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var imgs = document.getElementsByTagName('img');
+            var lis = document.getElementsByTagName('li');
+            var divs = document.getElementById('div0').getElementsByTagName('div');
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].index = i;
+                imgs[i].index = i;
+                divs[i].onmouseover = function(){
+                    imgs[this.index].setAttribute("class","show");
+                    lis[this.index].className = "zindex";
+                }
+                divs[i].onmouseout = function(){
+                    imgs[this.index].setAttribute("class","unshow");
+                    lis[this.index].className = "";
+                }
+                imgs[i].onmouseover = function(){
+                    this.setAttribute("class","show");
+                    lis[this.index].className = "zindex";
+                }
+                imgs[i].onmouseout = function(){
+                    this.setAttribute("class","unshow");
+                    lis[this.index].className = "";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div0">
+        <h2>名车车标展示，鼠标移过显示车标</h2>
+            <ul>
+                <li>
+                    <div><h4>BMW</h4>宝马汽车</div>
+                    <img src="images/1.jpg">
+                </li>
+                <li>
+                    <div><h4>Alfa Romeo</h4>阿尔法-罗密欧</div>
+                    <img src="images/2.jpg">
+                </li>
+                <li>
+                    <div><h4>Skoda</h4>斯柯达</div>
+                    <img src="images/3.jpg">
+                </li>
+                <li>
+                    <div><h4>Volkswagen</h4>大众汽车</div>
+                    <img src="images/4.jpg">
+                </li>
+                <li>
+                    <div><h4>Saab</h4>萨布牌轿车</div>
+                    <img src="images/5.jpg">
+                </li>
+                <li>
+                    <div><h4>Lamborghini</h4>兰博基尼</div>
+                    <img src="images/6.jpg">
+                </li>
+                <li>
+                    <div><h4>Porsche</h4>保时捷</div>
+                    <img src="images/7.jpg">
+                </li>
+                <li>
+                    <div><h4>Peugeot</h4>标致</div>
+                    <img src="images/8.jpg">
+                </li>
+                <li>
+                    <div><h4>Mercedes1</h4>梅赛德斯 奔驰</div>
+                    <img src="images/9.jpg">
+                </li>
+                <li>
+                    <div><h4>Buick</h4>别克汽车</div>
+                    <img src="images/10.jpg">
+                </li>
+            </ul>
+    </div>
+</body>
+</html>
