@@ -2,8 +2,54 @@
 <html>
 <head>
     <title>复选框checkbox全选/全不选/反选</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{text-align: center;}
+        a{margin-left: 10px;text-decoration: none;}
+        a:hover{color: red;}
+        dl{margin: auto;border-radius: 6px;border: 1px solid black;width: 120px;}
+        dt{border-bottom: 1px solid black;padding-bottom: 15px;}
+        dt,dd{margin:13px 7px 13px 7px;font-size: 13px;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var cho = document.getElementsByTagName('input');
+            var allcheck = document.getElementsByTagName('strong')[0];
+            var not = document.getElementsByTagName('a')[0];
+            cho[0].onclick=function(){
+                if (allcheck.innerHTML=="全选") {
+                    for (var i = 1; i < cho.length; i++) {
+                    cho[i].checked=true;
+                    }
+                    allcheck.innerHTML="全不选";
+                }else{
+                    for (var i = 1; i < cho.length; i++) {
+                    cho[i].checked=false;
+                    }
+                    allcheck.innerHTML="全选";
+                }
+            }
+            not.onclick=function(){
+                for (var i = 1; i < cho.length; i++) {
+                cho[i].checked=cho[i].checked==true?false:true;
+                }
+            }
+        }
+    </script>
 </head>
 <body>
-
+    <dl>
+        <dt><input type="checkbox"><strong>全选</strong><a href="javascript:">反选</a></dt>
+            <dd><input type="checkbox">选项（一）</dd>
+            <dd><input type="checkbox">选项（二）</dd>
+            <dd><input type="checkbox">选项（三）</dd>
+            <dd><input type="checkbox">选项（四）</dd>
+            <dd><input type="checkbox">选项（五）</dd>
+            <dd><input type="checkbox">选项（六）</dd>
+            <dd><input type="checkbox">选项（七）</dd>
+            <dd><input type="checkbox">选项（八）</dd>
+            <dd><input type="checkbox">选项（九）</dd>
+            <dd><input type="checkbox">选项（十）</dd>
+    </dl>
 </body>
 </html>
