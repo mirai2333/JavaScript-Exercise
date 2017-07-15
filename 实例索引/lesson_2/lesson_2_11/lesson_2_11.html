@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>鼠标移过，改变图片路径</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body{text-align: center;overflow: hidden;background:black;}
+        ul{margin: auto;background: white;padding: 0px;width: 229px;overflow: hidden;padding:5px 0px 5px 6px;-moz-border-radius: 10px;-webkit-border-radius: 10px;}
+        li{list-style-type: none;float: left;margin: 3px;width: 50px;height: 50px;}
+        img{-moz-border-radius: 10px;-webkit-border-radius: 10px;}
+        .first{width: 162px;height: 150px;position: relative;}
+        .first img{width: 161px;height: 162px;}
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var imgs = document.getElementsByTagName('img');
+            for (var i = 1; i < imgs.length; i++) {
+                imgs[i].index = i;
+                imgs[i].onmouseover=function(){
+                    var text=imgs[this.index].src;
+                    text=text.substring(text.indexOf("imgs"));
+                    imgs[0].src=text;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="first"><img src="imgs/small_1.jpg"></li>
+        <li><img src="imgs/small_1.jpg"></li>
+        <li><img src="imgs/small_2.jpg"></li>
+        <li><img src="imgs/small_3.jpg"></li>
+        <li><img src="imgs/small_4.jpg"></li>
+        <li><img src="imgs/small_5.jpg"></li>
+        <li><img src="imgs/small_6.jpg"></li>
+        <li><img src="imgs/small_7.jpg"></li>
+        <li><img src="imgs/small_8.jpg"></li>
+        <li><img src="imgs/small_9.jpg"></li>
+        <li><img src="imgs/small_10.jpg"></li>
+        <li><img src="imgs/small_11.jpg"></li>
+    </ul>
+</body>
+</html>
