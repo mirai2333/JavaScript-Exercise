@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用parseInt解析数字</title>
+    <style type="text/css">
+        body{text-align: center;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var input = document.getElementsByTagName('input');
+            var result = document.getElementById('result');
+            for (var i = 0; i < input.length-1; i++) {
+                input[i].onkeyup=function(){
+                    this.value=this.value.replace(/[^\d]/,"");
+                }
+            }
+            input[2].onclick=function(){
+                if (input[0].value&&input[1].value) {
+                    result.innerHTML=parseInt(input[0].value)+parseInt(input[1].value);
+                }else{
+                    alert("请输入数字！");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text"><strong>+</strong><input type="text"><span>=</span><span id="result">？</span>
+        <input type="button" value="求和">
+    </div>
+</body>
+</html>
