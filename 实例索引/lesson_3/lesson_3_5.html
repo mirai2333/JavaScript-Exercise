@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>页面加载后，自加1</title>
+    <style type="text/css">
+        body{text-align: center;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var Num = document.getElementsByTagName('strong')[0];
+            setInterval(add,1000);
+            function add() {
+                var text = Num.innerHTML;
+                Num.innerHTML=parseInt(text)+1;
+            }
+        }
+    </script>
+</head>
+<body>
+    <strong>0</strong>
+</body>
+</html>
