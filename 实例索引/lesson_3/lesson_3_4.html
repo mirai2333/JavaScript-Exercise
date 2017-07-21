@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>输入两个数字比较大小</title>
+    <style type="text/css">
+        body{text-align: center;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var input = document.getElementsByTagName('input');
+            var result = document.getElementById('result');
+            for (var i = 0; i < input.length-1; i++) {
+                input[i].onkeyup=function(){
+                    this.value=this.value.replace(/[^\d]/,"");
+                }
+            }
+            input[2].onclick=function(){
+                var num1=parseInt(input[0].value);
+                var num2=parseInt(input[1].value);
+                if (input[0].value&&input[1].value) {
+                    result.innerHTML=num1>num2?num1:num2;
+                }else{
+                    alert("请输入数字！");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text"><strong>vs</strong><input type="text">
+        <input type="button" value="最大的数是>>">
+        <span id="result">？</span>
+    </div>
+</body>
+</html>
