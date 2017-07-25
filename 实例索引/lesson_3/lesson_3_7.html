@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>网页计算器</title>
+    <style type="text/css">
+        body{text-align: center;color: white;overflow: hidden;}
+        p{margin: 0px;height: 20px;}
+        ul{margin: 0px 0px 15px 12px;padding: 0px;position: relative;overflow: hidden;}
+        button{margin: 16px 12px 0px 0px;padding: 0px; float: left;width: 60px;height: 40px;font-size: 20px;}
+        #name{height: 20px;margin: 0px 3px 0px 3px;text-align: right;}
+        #Cbody{width: 300px;height: 400px;background: black;margin: auto;}
+        #displayArea{height: 84px;font:700 50px/100px Arial;background: #EEEEE0;color: black;text-align: right;}
+        #num{font: 100 15px/20px Arial;position: absolute;top: 28px;left: 618px;width: 300px;height: 20px;color: black;text-align: right;}
+        .zero{width: 132px;}
+        .equal{height: 96px;position: absolute;bottom: 0px;right: 0px;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var current = document.getElementById('displayArea');
+            var already = document.getElementById('num');
+            var buttons = document.getElementsByTagName('button');
+            var mark = true;
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].className=="numbers"||buttons[i].className=="zero") {
+                    buttons[i].onclick=function(){
+                        if (!(/[\%\/\*\-\+]$/.test(current.innerText)&&this.innerHTML==".")) {
+                            if (current.innerText.length<10) {
+                                current.innerText+=this.innerHTML;
+                                var text = current.innerText.replace(/^[0\%\/\*\-\+](\d)/,"$1");
+                                current.innerText=text;
+                            }
+                        }
+                    }
+                }else if (buttons[i].className=="symbols") {
+                    buttons[i].onclick=function(){
+                        if (/[\%\/\*\-\+]$/.test(current.innerText)) {
+                            var text = already.innerHTML.replace(/([\%\/\*\-\+])$/,this.innerHTML);
+                            already.innerHTML=text;
+                            current.innerText=this.innerHTML;
+                        }else if (/[\%\/\*\-\+\=]$/.test(already.innerHTML)){
+                            already.innerHTML+=current.innerText+this.innerHTML;
+                            current.innerText=this.innerHTML;
+                        }else{
+                            already.innerHTML = current.innerText+this.innerHTML;
+                            current.innerText = this.innerHTML
+                        }
+                    }
+                }else if(buttons[i].className=="clear"){
+                    buttons[i].onclick=function(){
+                        already.innerHTML="";
+                        current.innerText="0";
+                    }
+                }else{
+                    buttons[i].onclick=function(){
+                        if (/[\%\/\*\-\+\=]$/.test(current.innerText)) {
+                            var text = already.innerHTML.replace(/([\%\/\*\-\+])$/,"");
+                            already.innerHTML=text;
+                            var text = eval(already.innerHTML);
+                            current.innerText=text.toString().substr(0,10);
+                        }else if (/[\%\/\*\-\+\=]$/.test(already.innerHTML)) {
+                            already.innerHTML+=current.innerText;
+                            current.innerText=this.innerHTML;
+                            var text = eval(already.innerHTML);
+                            current.innerText=text.toString().substr(0,10);
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="Cbody">
+        <p id="name">By-mirai2333</p>
+        <div id="displayArea">0</div>
+        <p id="num"></p>
+        <div>
+            <ul>
+                <button class="clear">C</button>
+                <button class="symbols">%</button>
+                <button class="symbols">/</button>
+                <button class="symbols">*</button>
+                <button class="numbers">7</button>
+                <button class="numbers">8</button>
+                <button class="numbers">9</button>
+                <button class="symbols">-</button>
+                <button class="numbers">4</button>
+                <button class="numbers">5</button>
+                <button class="numbers">6</button>
+                <button class="symbols">+</button>
+                <button class="numbers">1</button>
+                <button class="numbers">2</button>
+                <button class="numbers">3</button>
+                <button class="equal">=</button>
+                <button class="zero">0</button>
+                <button class="numbers">.</button>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
