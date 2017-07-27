@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>简易网页时钟</title>
+    <style type="text/css">
+        body{text-align: center;}
+        div{background: black;width: 270px;height: 72px;color: white;margin: auto;overflow: hidden;padding-left: 30px;}
+        span{float: left;width: 40px;height: 20px;background: white;border: 3px solid gray;margin-top: 22px;}
+        .time{background: black; border: 0px;}
+        .data{color: black;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var date0 = document.getElementsByClassName('data');
+            setInterval(getTimes,1000);
+            getTimes();
+            function getTimes(){
+                var date1 = new Date();
+                date0[0].innerHTML=date1.getHours();
+                date0[1].innerHTML=date1.getMinutes();
+                date0[2].innerHTML=date1.getSeconds();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <span class="data"></span>
+        <span class="time">时</span>
+        <span class="data"></span>
+        <span class="time">分</span>
+        <span class="data"></span>
+        <span class="time">秒</span>
+    </div>
+</body>
+</html>

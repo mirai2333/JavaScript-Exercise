@@ -15,14 +15,18 @@
         .equal{height: 96px;position: absolute;bottom: 0px;right: 0px;}
     </style>
     <script type="text/javascript">
+     //状态一：当前是数字，已经是符号或空（发生在键入符号后再键入数字，或初始状态）
+     //状态二：当前和已经都是符号（发生在键入符号后）
+     //状态三：当前和已经都是数字（发生在键入等号后）
         window.onload=function(){
             var current = document.getElementById('displayArea');
             var already = document.getElementById('num');
             var buttons = document.getElementsByTagName('button');
-            var mark = true;
             for (var i = 0; i < buttons.length; i++) {
+                //数字键的单击事件
                 if (buttons[i].className=="numbers"||buttons[i].className=="zero") {
                     buttons[i].onclick=function(){
+                        //外层循环是为了配合里面的替换，处理符号加点的情况
                         if (!(/[\%\/\*\-\+]$/.test(current.innerText)&&this.innerHTML==".")) {
                             if (current.innerText.length<10) {
                                 current.innerText+=this.innerHTML;
@@ -31,32 +35,40 @@
                             }
                         }
                     }
+                //符号键的单击事件
                 }else if (buttons[i].className=="symbols") {
                     buttons[i].onclick=function(){
+                        //对应状态二，此时要把旧符号换成新的，依旧是状态二
                         if (/[\%\/\*\-\+]$/.test(current.innerText)) {
                             var text = already.innerHTML.replace(/([\%\/\*\-\+])$/,this.innerHTML);
                             already.innerHTML=text;
                             current.innerText=this.innerHTML;
+                        //对应状态一，此时把当前数字移入已经并添加符号，变成状态二
                         }else if (/[\%\/\*\-\+\=]$/.test(already.innerHTML)){
                             already.innerHTML+=current.innerText+this.innerHTML;
                             current.innerText=this.innerHTML;
+                        //对应状态三，把结果移入已经并添加符号，变成状态二
                         }else{
                             already.innerHTML = current.innerText+this.innerHTML;
                             current.innerText = this.innerHTML
                         }
                     }
+                //清除
                 }else if(buttons[i].className=="clear"){
                     buttons[i].onclick=function(){
                         already.innerHTML="";
                         current.innerText="0";
                     }
+                //等号
                 }else{
                     buttons[i].onclick=function(){
+                        //状态二，去除符号并计算显示
                         if (/[\%\/\*\-\+\=]$/.test(current.innerText)) {
                             var text = already.innerHTML.replace(/([\%\/\*\-\+])$/,"");
                             already.innerHTML=text;
                             var text = eval(already.innerHTML);
                             current.innerText=text.toString().substr(0,10);
+                        //状态一，当前移入已经并计算显示
                         }else if (/[\%\/\*\-\+\=]$/.test(already.innerHTML)) {
                             already.innerHTML+=current.innerText;
                             current.innerText=this.innerHTML;
