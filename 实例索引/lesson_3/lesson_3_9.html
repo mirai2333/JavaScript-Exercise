@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>倒计时时钟</title>
+    <style type="text/css">
+        body{text-align: center;}
+        .div0{background: black;width: 270px;height: 125px;color: white;margin: auto;padding-left: 30px;}
+        div{width: 40px;height: 20px;background: white;border: 3px solid gray;margin-top: 22px;display: inline-block;}
+        input{display: block;width: 140px;height: 35px;margin-left: 50px;margin-top: 20px;}
+        .time{background: black; border: 0px;}
+        .data{color: black;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var date0 = document.getElementsByClassName('data');
+            var button = document.getElementsByTagName('input')[0];
+            var mark = 1;
+            var sign = true;
+            var starSign;
+            button.onclick = function(){
+                sign?starSign=setInterval(setTimes,1000):clearInterval(starSign);;
+                sign=!sign;
+                this.value=this.value=="启动"?"停止":"启动";
+            }
+            function setTimes(){
+                date0[1].innerHTML=eval(date0[1].innerHTML-1);
+                if(date0[1].innerHTML==0&&mark==1){
+                    var delay = setTimeout(change,1000);
+                    function change(){
+                        date0[1].innerHTML=59;
+                        date0[0].innerHTML=0;
+                        mark--;
+                    }
+                }else if (date0[1].innerHTML==0&&mark==0) {
+                    clearInterval(starSign);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="div0">
+        <div class="data">1</div>
+        <div class="time">分钟</div>
+        <div class="data">40</div>
+        <div class="time">秒</div>
+        <input type="button" value="启动">
+    </div>
+</body>
+</html>
