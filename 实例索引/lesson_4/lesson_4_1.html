@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>setTimeout应用</title>
+    <style type="text/css">
+        body{text-align: center;}
+        ul{padding: 0px;list-style-type: none;background-color: #0000ff;height: 30px;line-height: 30px;border-radius: 5px;}
+        li{display: inline-block;}
+        li div a{display: inline-block;background-color: #00ffff}
+        .title{text-decoration-line: none;color: #FFFFFF;display: block;height: 20px;line-height: 20px;width: 95px;border-radius: 10px;margin:0px 6px 0px 6px;}
+        a:hover{background-color: #6495ed;}
+        .div0{width: 910px;margin: auto;}
+        .discriptions{display: none;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var titles = document.getElementsByClassName('title');
+            var discriptions = document.getElementsByClassName('discriptions');
+            var mark=true;
+            for (var i = 0; i < discriptions.length; i++) {
+                discriptions[i].onmouseover=function(){mark=true;}
+                discriptions[i].onmouseout=function(){
+                    mark=false;
+                    var sign = setTimeout(cancle,1000);
+                    var elem = this;
+                    function cancle(){
+                        if (!mark) {
+                            elem.style.display="none";
+                        }
+                    }
+                }
+            }
+            for (var i = 0; i < titles.length; i++) {
+                titles[i].index = i;
+                titles[i].onmouseover=function(){
+                    mark=true;
+                    for (var i = 0; i < discriptions.length; i++) {
+                        discriptions[i].style.display="none";
+                    }
+                    discriptions[this.index].style.display="block";
+                }
+                titles[i].onmouseout=function(){
+                    mark=false;
+                    var sign = setTimeout(cancle,1000);
+                    var num = this.index;
+                    function cancle(){
+                        if (!mark) {
+                            discriptions[num].style.display="none";
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="div0">
+        <ul>
+            <li><a href="#" class="title">站长之家</a></li>
+            <li><a href="#" class="title">行业资讯</a></li>
+            <li><a href="#" class="title">站长在线</a></li>
+            <li><a href="#" class="title">网站运营</a></li>
+            <li><a href="#" class="title">设计在线</a></li>
+            <li><a href="#" class="title">网络编程</a></li>
+            <li><a href="#" class="title">联盟咨询</a></li>
+            <li><a href="#" class="title">服务器</a></li>
+            <div class="discriptions"></div>
+            <div class="discriptions" style="margin-left: -85px;">
+                <a href="#">业界动态</a> |
+                <a href="#">收购融资</a> |
+                <a href="#">门户动态</a> |
+                <a href="#">搜索引擎</a> |
+                <a href="#">网络游戏</a> |
+                <a href="#">广告传媒</a> |
+                <a href="#">厂商开发</a> |
+            </div>
+            <div class="discriptions" style="margin-left: 65px;">
+                <a href="#">站长报道</a> |
+                <a href="#">好站推荐</a> |
+                <a href="#">站长聚会</a> |
+                <a href="#">站长访谈</a> |
+                <a href="#">站长茶馆</a> |
+                <a href="#">网站排行</a> |
+            </div>
+            <div class="discriptions" style="margin-left: 215px;">
+                <a href="#">建站经验</a> |
+                <a href="#">策划盈利</a> |
+                <a href="#">搜索优化</a> |
+                <a href="#">网站推广</a> |
+                <a href="#">免费资源</a> |
+            </div>
+            <div class="discriptions" style="margin-left: 435px;">
+                <a href="#">酷站推荐</a> |
+                <a href="#">网页设计</a> |
+                <a href="#">WEB标准</a> |
+                <a href="#">视频处理</a> |
+                <a href="#">设计活动</a> |
+            </div>
+            <div class="discriptions" style="text-align: right;">
+                <a href="#">Asp编程</a> |
+                <a href="#">Php编程</a> |
+                <a href="#">Net编程</a> |
+                <a href="#">Access</a> |
+                <a href="#">Mssql</a> |
+                <a href="#">Mysql</a> |
+            </div>
+            <div class="discriptions" style="text-align: right;">
+                <a href="#">联盟动态</a> |
+                <a href="#">联盟介绍</a> |
+                <a href="#">联盟点评</a> |
+                <a href="#">网赚技巧</a> |
+            </div>
+            <div class="discriptions" style="text-align: right;">
+                <a href="#">Web服务器</a> |
+                <a href="#">Ftp服务器</a> |
+                <a href="#">Mail服务器</a> |
+                <a href="#">Dns服务器</a> |
+                <a href="#">Win服务器</a> |
+                <a href="#">Linux服务器</a> |
+                <a href="#">安全防护</a> |
+                <a href="#">虚拟主机</a> |
+            </div>
+        </ul>
+    </div>
+</body>
+</html>
