@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>自动改变方向——幻灯片效果</title>
+    <style type="text/css">
+        body{text-align: center;background-color: black;}
+        div{width: 511px;margin: auto;}
+        ul{padding: 0px;border-radius: 10px;border: 10px solid white;overflow: hidden;}
+        li{list-style-type: none;display: none;height: 170px;}
+        .show{display: block;}
+        .aBut{border: 0px;position: absolute;top: 153px;left: 890px;border-radius: 0px;cursor: default;}
+        .but{background-color: #90ee90;width: 18px;height: 18px;display: inline-block;border-radius: 9px;font-size: 13px;color: white;line-height: 18px;cursor: pointer;}
+        .show1{background-color: black;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var imgs = document.getElementsByTagName('li');
+            var tags = document.getElementsByClassName('but');
+            var mark1 = true;
+            var sign = setInterval(Next,1500);
+            for (var i = 0; i < tags.length; i++) {
+                tags[i].index = i;
+                tags[i].onmouseover = function(){
+                    changeImgs(this);
+                    clearInterval(sign);
+                }
+                tags[i].onmouseout = function(){
+                    sign = setInterval(Next,1500);
+                }
+            }
+            function changeImgs(elem){
+                for (var i = 0; i < 5; i++) {
+                    imgs[i].className = "";
+                    tags[i].style.background = "#90ee90";
+                }
+                    imgs[elem.index].className = "show";
+                    elem.style.background = "#ff0000";
+            }
+            function Next() {
+                var mark=0;
+                while(imgs[mark].className != "show"){
+                    mark++;
+                }
+                if (mark1) {
+                    mark++;
+                    if (mark == 5) {mark1 = false;mark-=2;}
+                }else{
+                    mark--;
+                    if (mark == -1) {mark1 = true;mark+=2;}
+                }
+                changeImgs(tags[mark]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li class="show"><img src="imgs/01.jpg"></li>
+            <li><img src="imgs/02.jpg"></li>
+            <li><img src="imgs/03.jpg"></li>
+            <li><img src="imgs/04.jpg"></li>
+            <li><img src="imgs/05.jpg"></li>
+        </ul>
+        <ul class="aBut">
+            <li class="but" style="background-color: #ff0000">1</li>
+            <li class="but">2</li>
+            <li class="but">3</li>
+            <li class="but">4</li>
+            <li class="but">5</li>
+        </ul>
+    </div>
+</body>
+</html>
