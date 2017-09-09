@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设置/读取对象的属性</title>
+    <style type="text/css">
+        body{text-align: center;}
+        div{width: 400px;height: 200px;background-color: rgb(254,244,235);margin: auto;border: 1px solid red;}
+        .div1{width: 330px;height: 100px;background-color: rgb(239,248,255);margin: auto;border: 1px solid blue;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var getStyle = document.getElementsByTagName('input')[0];
+            var setStyle = document.getElementsByTagName('input')[1];
+            var defaultStyle = document.getElementsByTagName('input')[2];
+            var div = document.getElementsByTagName("div")[0];
+            setStyle.onclick = function(){
+                div.className = "div1";
+            }
+            defaultStyle.onclick = function(){
+                div.className = "";
+            }
+            getStyle.onclick = function(){
+                alert(div.style.width);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" value="Get Style">
+        <input type="button" value="Set Style">
+        <input type="button" value="Default Style">
+    </div>
+</body>
+</html>
